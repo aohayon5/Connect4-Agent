@@ -38,14 +38,11 @@ def create_state(board):
     State format: [board, heuristic_value, whose_turn, empty_cells]
     """
     empty_count = np.count_nonzero(board == 0)
-    # Determine whose turn based on piece count (HUMAN always goes first)
-    human_count = np.count_nonzero(board == HUMAN)
-    computer_count = np.count_nonzero(board == COMPUTER)
-    
-    # Fixed logic: If counts are equal, it's HUMAN's turn (they go first)
-    # If human has more pieces, it's COMPUTER's turn
-    whose_turn = COMPUTER if human_count > computer_count else HUMAN
-    
+
+    # When go() is called, it's ALWAYS the COMPUTER's turn (we're asking the AI to make a move)
+    # The turn tracking is maintained during the search by make_move()
+    whose_turn = COMPUTER
+
     return [board, 0.00001, whose_turn, empty_count]
 
 def value(s):
