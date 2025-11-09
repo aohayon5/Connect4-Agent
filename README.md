@@ -1,6 +1,6 @@
 # Connect Four AI
 
-A Connect Four implementation featuring an AI opponent that uses minimax with alpha-beta pruning to make strategic decisions. The AI looks several moves ahead using advanced heuristic evaluation, winning the vast majority of games against random opponents while maintaining fast performance.
+A Connect Four implementation featuring an AI opponent that uses minimax with alpha-beta pruning to facilitate strategically impactful decisions. The AI looks several moves ahead using advanced heuristic evaluation, winning the vast majority of games against random opponents while maintaining fast performance.
 
 ## Features
 
