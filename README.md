@@ -54,7 +54,7 @@ RED (YOU) WIN!
 ## Installation
 
 ### Requirements
-- Python 3.x
+- Python 3
 - NumPy (required)
 - termcolor (optional, for colored output)
 
