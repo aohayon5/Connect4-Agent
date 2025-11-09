@@ -183,7 +183,6 @@ def MoveSmartAI(board, color):
 
 def main():
     """Main game loop execution"""
-    turn = 0
     board = create_board()
     print("\n" + "="*50)
     print("CONNECT FOUR WITH AI (Alpha-Beta Pruning)")
@@ -196,18 +195,15 @@ def main():
 
     player_goes_first = (player_choice == '1')
 
-    if player_goes_first:
-        human_color = RED_INT
-        ai_color = BLUE_INT
-        human_char = "RED (X)"
-        ai_char = "BLUE (O)"
-    else:
-        human_color = BLUE_INT
-        ai_color = RED_INT
-        human_char = "BLUE (O)"
-        ai_char = "RED (X)"
+    # Player is always RED (X), AI is always BLUE (O) to match AI engine constants
+    # We just change who goes first by adjusting the turn counter
+    turn = 0 if player_goes_first else 1
 
-    print(f"You are {human_char}, AI is {ai_char}")
+    print("You are RED (X), AI is BLUE (O)")
+    if player_goes_first:
+        print("You will play first!")
+    else:
+        print("AI will play first!")
     print("The AI uses minimax with alpha-beta pruning")
     print("="*50 + "\n")
 
@@ -215,13 +211,9 @@ def main():
     game_over = False
 
     while not game_over:
-        # Determine whose turn it is based on player choice
-        is_human_turn = (turn % 2 == 0 and player_goes_first) or (turn % 2 == 1 and not player_goes_first)
-
-        if is_human_turn:
-            # Human player
-            color_name = "RED" if human_color == RED_INT else "BLUE"
-            col = int(input(f"{color_name} please choose a column(1-7): "))
+        if turn % 2 == 0:
+            # Human player (RED)
+            col = int(input("RED please choose a column(1-7): "))
             while col > 7 or col < 1:
                 col = int(input("Invalid column, pick a valid one: "))
             while not is_valid_location(board, col - 1):
@@ -229,28 +221,24 @@ def main():
             col -= 1
 
             row = get_next_open_row(board, col)
-            drop_chip(board, row, col, human_color)
+            drop_chip(board, row, col, RED_INT)
 
         else:
-            # AI player - using smart AI instead of random
-            MoveSmartAI(board, ai_color)
+            # AI player (BLUE) - using smart AI instead of random
+            MoveSmartAI(board, BLUE_INT)
 
         print_board(board)
 
         # Check for game over conditions
-        if game_is_won(board, human_color):
+        if game_is_won(board, RED_INT):
             game_over = True
             print("\n" + "="*50)
-            color_display = 'red' if human_color == RED_INT else 'blue'
-            color_name = "RED" if human_color == RED_INT else "BLUE"
-            print(colored(f"{color_name} (YOU) WIN! Congratulations!", color_display))
+            print(colored("RED (YOU) WIN! Congratulations!", 'red'))
             print("="*50)
-        elif game_is_won(board, ai_color):
+        elif game_is_won(board, BLUE_INT):
             game_over = True
             print("\n" + "="*50)
-            color_display = 'red' if ai_color == RED_INT else 'blue'
-            color_name = "RED" if ai_color == RED_INT else "BLUE"
-            print(colored(f"{color_name} (AI) WINS! Better luck next time!", color_display))
+            print(colored("BLUE (AI) WINS! Better luck next time!", 'blue'))
             print("="*50)
         elif len(get_valid_locations(board)) == 0:
             game_over = True
