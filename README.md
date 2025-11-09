@@ -2,46 +2,33 @@
 
 A Connect Four implementation featuring an AI opponent that uses minimax with alpha-beta pruning to facilitate strategically impactful decisions. The AI looks several moves ahead using advanced heuristic evaluation, winning the vast majority of games against random opponents while maintaining fast performance.
 
-## Example Games
+## Example Game
 
-<table>
-<tr>
-<td>
-
-**AI Victory**
-```
 AI wins by playing column 2!
- 1  2  3  4  5  6  7
-| _ | _ | _ | _ | _ | _ | _ |
-| _ | _ | ❌ | ❌ | _ | _ | _ |
-| _ | 🔵 | ❌ | 🔵 | _ | _ | _ |
-| _ | 🔵 | 🔵 | ❌ | _ | _ | _ |
-| _ | ❌ | ❌ | 🔵 | 🔵 | _ | _ |
-| 🔵 | ❌ | ❌ | ❌ | 🔵 | 🔵 | _ |
+ 1 2 3 4 5 6 7
+|_|_|_|_|_|_|_|
+|_|_|X|X|_|_|_|
+|_|O|X|O|_|_|_|
+|_|O|O|X|_|_|_|
+|_|X|X|O|O|_|_|
+|O|X|X|X|O|O|_|
 
-BLUE (AI) WINS!
-```
+==================================================
+BLUE (AI) WINS! Better luck next time!
+==================================================
 
-</td>
-<td>
 
-**Player Victory**
-```
- 1  2  3  4  5  6  7
-| ❌ | ❌ | 🔵 | 🔵 | _ | 🔵 | _ |
-| ❌ | 🔵 | ❌ | ❌ | ❌ | ❌ | _ |
-| 🔵 | ❌ | ❌ | 🔵 | 🔵 | 🔵 | _ |
-| 🔵 | 🔵 | 🔵 | ❌ | 🔵 | ❌ | _ |
-| 🔵 | 🔵 | ❌ | 🔵 | ❌ | 🔵 | ❌ |
-| ❌ | 🔵 | ❌ | ❌ | ❌ | 🔵 | ❌ |
+ 1 2 3 4 5 6 7 
+|X|X|O|O|_|O|_|
+|X|O|X|X|X|X|_|
+|O|X|X|O|O|O|_|
+|O|O|O|X|O|X|_|
+|O|O|X|O|X|O|X|
+|X|O|X|X|X|O|X|
 
-RED (YOU) WIN!
-```
-
-</td>
-</tr>
-</table>
-
+==================================================
+RED (YOU) WIN! Congratulations! (AI gives upon forced win)
+==================================================
 ## Features
 
 - **Alpha-Beta Pruning**: Minimax algorithm with alpha-beta pruning for efficient game tree exploration
