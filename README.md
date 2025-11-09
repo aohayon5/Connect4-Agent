@@ -1,4 +1,4 @@
-# Connect Four Agent
+# Connect4 Agent
 
 A Connect Four implementation featuring an AI opponent that uses minimax with alpha-beta pruning to facilitate strategically impactful decisions. The AI looks several moves ahead using advanced heuristic evaluation, winning the vast majority of games against random opponents while maintaining fast performance.
 
